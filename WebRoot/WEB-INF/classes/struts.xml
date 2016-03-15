@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+ <package name="json-storage" extends="json-default">  
+         <action name="findresult"  class="com.ir.action.AutoCompleteAction"  method="findresult" >  
+            <result type="json">  
+                <param name="root">content</param>  
+            </result>  
+        </action>  
+        <action name="getPic" class="com.ir.action.PicAction" method="show">
+       		<result>/result.jsp</result>
+        </action>
+    </package>
+     <package name="test"  extends="struts-default">
+     <action name="search" class="com.ir.action.TestAction">
+            <result name="success">/search.jsp</result>        
+        </action>
+        <!--实现异步刷新，使用下面的method，用result.jsp里的内容来替换原来div的部分，页码也需要一同刷新；
+        	这个和之前学过的iframe是一个道理 -->
+        <action name="ajaxsearch" class="com.ir.action.TestAction" method="responseAjax">
+            <result name="success">/result.jsp</result>        
+        </action>
+        
+    </package>
+</struts>    
